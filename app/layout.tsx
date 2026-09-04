@@ -13,8 +13,8 @@ const syne = Syne({
 });
 
 export const metadata: Metadata = {
-  title: 'cruthecat — internet creature',
-  description: 'Kod, design i odrobina kontrolowanego chaosu.',
+  title: 'cruthecat — Low-Code Developer',
+  description: 'Low-code, design i odrobina kontrolowanego chaosu.',
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {

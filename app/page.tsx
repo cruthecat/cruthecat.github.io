@@ -4,8 +4,8 @@ import { ArrowUpRight, Check, Code2, Copy, Sparkles } from 'lucide-react';
 import { useState } from 'react';
 
 const details = [
-  { number: '01', label: 'Kod', text: 'prosto, szybko, bez zbędnego hałasu' },
-  { number: '02', label: 'Design', text: 'charakter zamiast gotowych schematów' },
+  { number: '01', label: 'Low-Code', text: 'pomysły zamieniam w działające rozwiązania' },
+  { number: '02', label: 'Design', text: 'prosto, czytelnie i z charakterem' },
   { number: '03', label: 'Eksperymenty', text: 'bo najlepsze rzeczy zaczynają się od „a co jeśli?”' },
 ];
 
@@ -29,14 +29,14 @@ export default function Home() {
 
       <section className="hero" id="top">
         <div className="hero-copy">
-          <p className="eyebrow"><Sparkles size={15} aria-hidden="true" /> internet creature / 2026</p>
+          <p className="eyebrow"><Sparkles size={15} aria-hidden="true" /> Low-Code Developer / 2026</p>
           <h1>
             Robię rzeczy<br />
             <span>w sieci.</span>
           </h1>
           <p className="intro">
-            Kod, design i odrobina kontrolowanego chaosu. Buduję rzeczy,
-            które dobrze wyglądają i jeszcze lepiej działają.
+            Łączę narzędzia low-code, dobry design i odrobinę kontrolowanego
+            chaosu. Pomysły szybko zamieniam w rzeczy, które po prostu działają.
           </p>
           <div className="actions">
             <a className="primary-button" href="https://github.com/cruthecat" target="_blank" rel="noreferrer">
