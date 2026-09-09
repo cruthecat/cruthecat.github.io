@@ -1,125 +1,149 @@
-import { ArrowRight, Code2, Workflow } from 'lucide-react';
+import { ArrowRight, Code2, Layers3, Workflow, Zap } from 'lucide-react';
 import Image from 'next/image';
 
-const services = [
+const areas = [
   {
+    icon: <Workflow aria-hidden="true" />,
     number: '01',
     title: 'Automatyzacje',
-    text: 'Łączę narzędzia i usuwam powtarzalne kroki z codziennej pracy.',
+    text: 'Mniej ręcznej pracy. Więcej rzeczy, które dzieją się same.',
+    className: 'area-card area-violet',
   },
   {
+    icon: <Layers3 aria-hidden="true" />,
     number: '02',
-    title: 'Aplikacje low-code',
-    text: 'Buduję lekkie rozwiązania, które szybko przechodzą od pomysłu do użycia.',
+    title: 'Low-code',
+    text: 'Szybkie aplikacje dopasowane do prawdziwego procesu.',
+    className: 'area-card area-lime',
   },
   {
+    icon: <Zap aria-hidden="true" />,
     number: '03',
-    title: 'Dobry przepływ',
-    text: 'Porządkuję procesy tak, aby były zrozumiałe dla ludzi i łatwe w utrzymaniu.',
+    title: 'Prosty UX',
+    text: 'Interfejs, którego nie trzeba tłumaczyć instrukcją.',
+    className: 'area-card area-coral',
   },
 ];
 
 export default function Home() {
   return (
     <main id="top">
-      <header className="site-header">
-        <a className="brand" href="#top" aria-label="cruthecat — początek strony">
-          <span className="brand-mark"><Code2 aria-hidden="true" /></span>
-          cruthecat<span>.</span>
-        </a>
-        <nav aria-label="Nawigacja strony">
-          <a href="#about">O mnie</a>
-          <a href="#work">Co robię</a>
-          <a className="nav-cta" href="#contact">Kontakt</a>
-        </nav>
-      </header>
-
-      <section className="hero">
-        <div className="hero-copy">
-          <p className="eyebrow"><span /> Low-Code Developer</p>
-          <h1>Proste rozwiązania.<br /><em>Mniej klikania.</em></h1>
-          <p className="hero-lead">
-            Zamieniam złożone procesy w czytelne narzędzia, automatyzacje
-            i aplikacje, z których po prostu dobrze się korzysta.
-          </p>
-          <div className="hero-actions">
-            <a className="button button-primary" href="#work">
-              Zobacz, co robię <ArrowRight aria-hidden="true" />
-            </a>
-            <a className="text-link" href="https://github.com/cruthecat" target="_blank" rel="noreferrer">
+      <div className="shell">
+        <header className="topbar">
+          <a className="brand" href="#top" aria-label="cruthecat — początek strony">
+            <span className="brand-icon"><Code2 aria-hidden="true" /></span>
+            <span>cruthecat</span>
+          </a>
+          <nav aria-label="Nawigacja strony">
+            <a href="#about">O mnie</a>
+            <a href="#areas">Obszary</a>
+            <a className="github-link" href="https://github.com/cruthecat" target="_blank" rel="noreferrer">
               GitHub <span aria-hidden="true">↗</span>
             </a>
-          </div>
-        </div>
+          </nav>
+        </header>
 
-        <div className="portrait-card">
-          <div className="portrait-top">
-            <span>CRUTHECAT</span>
-            <span>PL / 2026</span>
-          </div>
-          <div className="portrait-frame">
+        <section className="bento-hero" aria-labelledby="hero-title">
+          <article className="hero-card">
+            <div className="hero-card-top">
+              <p><span /> Low-Code Developer</p>
+              <span>PL</span>
+            </div>
+            <div>
+              <p className="hero-note">Cześć, jestem cruthecat.</p>
+              <h1 id="hero-title">Buduję<br /><em>prościej.</em></h1>
+            </div>
+            <div className="hero-bottom">
+              <p>Porządkuję procesy i zamieniam je w lekkie, działające narzędzia.</p>
+              <a className="round-button" href="#areas" aria-label="Zobacz obszary pracy">
+                <ArrowRight aria-hidden="true" />
+              </a>
+            </div>
+          </article>
+
+          <article className="portrait-card">
             <Image src="/cruthecat.png" width={900} height={900} priority alt="Czarny kot — znak cruthecat" />
-          </div>
-          <div className="portrait-bottom">
-            <span className="status-dot" />
-            <p>Buduję rzeczy, które upraszczają pracę.</p>
-          </div>
-        </div>
-      </section>
+            <div className="portrait-shade" />
+            <div className="portrait-label">
+              <span>CRUTHECAT</span>
+              <span>LOW-CODE / UX</span>
+            </div>
+          </article>
 
-      <div className="skill-strip" aria-label="Obszary pracy">
-        <span>LOW-CODE</span><i>+</i><span>AUTOMATION</span><i>+</i>
-        <span>WORKFLOWS</span><i>+</i><span>UX</span><i>+</i><span>API</span>
+          <article className="signal-card">
+            <span className="signal-pulse" aria-hidden="true" />
+            <p>TRYB PRACY</p>
+            <strong>Pomysł → prototyp → działające rozwiązanie</strong>
+          </article>
+
+          <article className="focus-card">
+            <div className="focus-head">
+              <span>AKTUALNY FOCUS</span>
+              <Code2 aria-hidden="true" />
+            </div>
+            <div className="focus-tags">
+              <span>automatyzacja</span>
+              <span>workflow</span>
+              <span>low-code</span>
+              <span>integracje</span>
+            </div>
+          </article>
+        </section>
+
+        <section className="areas" id="areas">
+          <div className="section-heading">
+            <p>CO ROBIĘ</p>
+            <h2>Trzy obszary.<br />Jeden cel.</h2>
+          </div>
+          <div className="area-grid">
+            {areas.map((area) => (
+              <article className={area.className} key={area.number}>
+                <div className="area-top">
+                  {area.icon}
+                  <span>{area.number}</span>
+                </div>
+                <div>
+                  <h3>{area.title}</h3>
+                  <p>{area.text}</p>
+                </div>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <section className="about-grid" id="about">
+          <article className="about-card">
+            <p className="card-kicker">O MNIE</p>
+            <h2>Technologia ma zdejmować problemy z głowy.</h2>
+            <p className="about-copy">
+              Łączę logikę, narzędzia low-code i wyczucie interfejsu. Najbardziej
+              lubię moment, w którym chaotyczny proces zaczyna działać jak prosty system.
+            </p>
+          </article>
+
+          <article className="rule-card">
+            <p className="card-kicker">ZASADA</p>
+            <blockquote>Jeśli rozwiązanie trzeba długo tłumaczyć, nadal można je uprościć.</blockquote>
+            <div className="rule-line"><span /><span /><span /></div>
+          </article>
+        </section>
+
+        <section className="contact-card" id="contact">
+          <div>
+            <p className="card-kicker">MASZ POMYSŁ?</p>
+            <h2>Zbudujmy coś,<br />co robi robotę.</h2>
+          </div>
+          <a className="contact-button" href="https://github.com/cruthecat" target="_blank" rel="noreferrer">
+            Otwórz GitHub <ArrowRight aria-hidden="true" />
+          </a>
+        </section>
+
+        <footer>
+          <a className="brand footer-brand" href="#top"><span>cruthecat</span></a>
+          <p>Low-Code Developer · © 2026</p>
+          <a href="#top">Do góry ↑</a>
+        </footer>
       </div>
-
-      <section className="about section" id="about">
-        <div className="section-label">01 / O MNIE</div>
-        <div className="about-content">
-          <h2>Technologia ma pomagać.<br />Nie przeszkadzać.</h2>
-          <div className="about-text">
-            <p>
-              Lubię brać na warsztat procesy, które są zbyt długie, chaotyczne
-              albo zależne od ręcznej pracy — i układać je od nowa.
-            </p>
-            <p>
-              Łączę logikę, low-code i wyczucie interfejsu. Efekt ma być prosty,
-              szybki i gotowy do użycia, a nie tylko dobrze wyglądać na prezentacji.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <section className="work section" id="work">
-        <div className="section-label">02 / CO ROBIĘ</div>
-        <div className="work-heading">
-          <h2>Od pomysłu<br />do działania.</h2>
-          <Workflow aria-hidden="true" />
-        </div>
-        <div className="service-list">
-          {services.map((service) => (
-            <article className="service-row" key={service.number}>
-              <span>{service.number}</span>
-              <h3>{service.title}</h3>
-              <p>{service.text}</p>
-              <ArrowRight aria-hidden="true" />
-            </article>
-          ))}
-        </div>
-      </section>
-
-      <section className="contact" id="contact">
-        <p className="eyebrow"><span /> Masz pomysł?</p>
-        <h2>Zróbmy z niego<br /><em>działające rozwiązanie.</em></h2>
-        <a className="button button-dark" href="https://github.com/cruthecat" target="_blank" rel="noreferrer">
-          Napisz do mnie na GitHubie <ArrowRight aria-hidden="true" />
-        </a>
-      </section>
-
-      <footer>
-        <a className="brand footer-brand" href="#top"><span>cruthecat.</span></a>
-        <p>Low-Code Developer · Polska</p>
-        <a href="#top">Do góry ↑</a>
-      </footer>
     </main>
   );
 }
