@@ -45,7 +45,6 @@ export default function Home() {
         <nav aria-label="Nawigacja strony">
           <a href="#about">O mnie</a>
           <a href="#skills">Specjalizacje</a>
-          <a href="#projects">Projekty</a>
           <a href="#contact">Kontakt</a>
         </nav>
       </header>
@@ -60,8 +59,8 @@ export default function Home() {
             Zamieniam złożone procesy w proste, działające rozwiązania.
           </p>
           <div className="hero-actions">
-            <a className="button button-solid" href="#projects">
-              <Code2 size={18} aria-hidden="true" /> Zobacz projekty
+            <a className="button button-solid" href="#skills">
+              <Code2 size={18} aria-hidden="true" /> Zobacz co robię
             </a>
             <a className="button button-outline" href="https://github.com/cruthecat" target="_blank" rel="noreferrer">
               <Code2 size={18} aria-hidden="true" /> GitHub
@@ -161,52 +160,6 @@ export default function Home() {
             </article>
           ))}
         </div>
-      </section>
-
-      <section className="projects" id="projects">
-        <div className="section-intro projects-intro">
-          <p className="section-kicker">{'// selected-work.ts'}</p>
-          <h2>Wybrany <span>projekt</span></h2>
-          <p>Rzeczy, które wyszły poza etap pomysłu i trafiły do użytkowników.</p>
-        </div>
-
-        <article className="project-card">
-          <div className="project-preview" aria-hidden="true">
-            <div className="project-preview-top">
-              <span>WPP</span>
-              <span>ADDON / PL</span>
-            </div>
-            <div className="project-mark">
-              <span>WoW</span>
-              <strong>Po Polsku</strong>
-              <b>2.0</b>
-            </div>
-            <div className="project-console">
-              <span>locale</span><strong>pl_PL</strong>
-              <span>status</span><strong>online</strong>
-            </div>
-          </div>
-
-          <div className="project-copy">
-            <div className="project-meta">
-              <span>01 / FEATURED</span>
-              <span className="live-dot">Aktywny projekt</span>
-            </div>
-            <h3>WoW Po Polsku <span>2.0</span></h3>
-            <p>
-              Polski projekt tłumaczeniowy dla World of Warcraft. Miejsce dla graczy,
-              którzy chcą odkrywać Azeroth po polsku i być blisko rozwoju projektu.
-            </p>
-            <div className="project-tags" aria-label="Kategorie projektu">
-              <span>World of Warcraft</span>
-              <span>Polska lokalizacja</span>
-              <span>Community</span>
-            </div>
-            <a className="project-link" href="https://pl.wowtranslateproject.org/" target="_blank" rel="noreferrer">
-              Odwiedź WoW Po Polsku <ArrowRight size={18} aria-hidden="true" />
-            </a>
-          </div>
-        </article>
       </section>
 
       <section className="contact" id="contact">
