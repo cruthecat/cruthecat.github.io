@@ -1,6 +1,7 @@
 'use client';
 
 import { ArrowRight, Check, Code2, Copy, Mail, Workflow } from 'lucide-react';
+import Image from 'next/image';
 import { useState } from 'react';
 
 const ticker = [
@@ -44,6 +45,7 @@ export default function Home() {
         <nav aria-label="Nawigacja strony">
           <a href="#about">O mnie</a>
           <a href="#skills">Specjalizacje</a>
+          <a href="#projects">Projekty</a>
           <a href="#contact">Kontakt</a>
         </nav>
       </header>
@@ -58,8 +60,8 @@ export default function Home() {
             Zamieniam złożone procesy w proste, działające rozwiązania.
           </p>
           <div className="hero-actions">
-            <a className="button button-solid" href="#skills">
-              <Code2 size={18} aria-hidden="true" /> Zobacz co robię
+            <a className="button button-solid" href="#projects">
+              <Code2 size={18} aria-hidden="true" /> Zobacz projekty
             </a>
             <a className="button button-outline" href="https://github.com/cruthecat" target="_blank" rel="noreferrer">
               <Code2 size={18} aria-hidden="true" /> GitHub
@@ -79,7 +81,7 @@ export default function Home() {
             <div className="workspace-body">
               <div className="terminal-pane">
                 <div className="avatar-shell">
-                  <img src="./cruthecat.png" alt="Czarny kot z neonowym zielonym okiem" />
+                  <Image src="/cruthecat.png" width={400} height={400} alt="Czarny kot z neonowym zielonym okiem" />
                 </div>
                 <div className="terminal-profile">
                   <p><span>user</span> cruthecat</p>
@@ -90,13 +92,13 @@ export default function Home() {
               </div>
               <div className="code-pane" aria-label="Przykładowy opis pracy">
                 <div><b>01</b><span className="code-pink">const</span> builder = {'{'}</div>
-                <div><b>02</b>&nbsp;&nbsp;focus: <span className="code-yellow">'useful products'</span>,</div>
-                <div><b>03</b>&nbsp;&nbsp;tools: [<span className="code-yellow">'low-code'</span>, <span className="code-yellow">'APIs'</span>],</div>
-                <div><b>04</b>&nbsp;&nbsp;approach: <span className="code-yellow">'keep it simple'</span>,</div>
+                <div><b>02</b>&nbsp;&nbsp;focus: <span className="code-yellow">{"'useful products'"}</span>,</div>
+                <div><b>03</b>&nbsp;&nbsp;tools: [<span className="code-yellow">{"'low-code'"}</span>, <span className="code-yellow">{"'APIs'"}</span>],</div>
+                <div><b>04</b>&nbsp;&nbsp;approach: <span className="code-yellow">{"'keep it simple'"}</span>,</div>
                 <div><b>05</b>&nbsp;&nbsp;ship: <span className="code-blue">true</span></div>
                 <div><b>06</b>{'}'};</div>
                 <div className="code-empty"><b>07</b></div>
-                <div><b>08</b><span className="code-green">// idea → working solution</span><i className="cursor" /></div>
+                <div><b>08</b><span className="code-green">{'// idea → working solution'}</span><i className="cursor" /></div>
               </div>
             </div>
           </div>
@@ -114,18 +116,18 @@ export default function Home() {
 
       <section className="about" id="about">
         <div className="section-intro">
-          <p className="section-kicker">// profile.md</p>
+          <p className="section-kicker">{'// profile.md'}</p>
           <h2>O <span>mnie</span></h2>
           <p>Technologia ma zdejmować problemy z głowy, a nie tworzyć nowe.</p>
         </div>
 
         <div className="about-card">
           <div className="about-visual">
-            <img src="./cruthecat.png" alt="Portret czarnego kota — symbol cruthecat" />
+            <Image src="/cruthecat.png" width={900} height={900} alt="Portret czarnego kota — symbol cruthecat" />
             <div className="image-label"><span>CRUTHECAT</span><span>LOW-CODE DEV</span></div>
           </div>
           <div className="about-copy">
-            <span className="comment">/* kim jestem */</span>
+            <span className="comment">{'/* kim jestem */'}</span>
             <h3>Buduję szybciej.<br />Myślę szerzej.</h3>
             <p>
               Łączę logikę, narzędzia low-code i dobry design. Najbardziej lubię moment,
@@ -145,7 +147,7 @@ export default function Home() {
 
       <section className="skills" id="skills">
         <div className="section-intro compact">
-          <p className="section-kicker">// services.json</p>
+          <p className="section-kicker">{'// services.json'}</p>
           <h2>Co <span>robię</span></h2>
           <p>Trzy rzeczy, które trzymają moje projekty w ryzach.</p>
         </div>
@@ -159,6 +161,52 @@ export default function Home() {
             </article>
           ))}
         </div>
+      </section>
+
+      <section className="projects" id="projects">
+        <div className="section-intro projects-intro">
+          <p className="section-kicker">{'// selected-work.ts'}</p>
+          <h2>Wybrany <span>projekt</span></h2>
+          <p>Rzeczy, które wyszły poza etap pomysłu i trafiły do użytkowników.</p>
+        </div>
+
+        <article className="project-card">
+          <div className="project-preview" aria-hidden="true">
+            <div className="project-preview-top">
+              <span>WPP</span>
+              <span>ADDON / PL</span>
+            </div>
+            <div className="project-mark">
+              <span>WoW</span>
+              <strong>Po Polsku</strong>
+              <b>2.0</b>
+            </div>
+            <div className="project-console">
+              <span>locale</span><strong>pl_PL</strong>
+              <span>status</span><strong>online</strong>
+            </div>
+          </div>
+
+          <div className="project-copy">
+            <div className="project-meta">
+              <span>01 / FEATURED</span>
+              <span className="live-dot">Aktywny projekt</span>
+            </div>
+            <h3>WoW Po Polsku <span>2.0</span></h3>
+            <p>
+              Polski projekt tłumaczeniowy dla World of Warcraft. Miejsce dla graczy,
+              którzy chcą odkrywać Azeroth po polsku i być blisko rozwoju projektu.
+            </p>
+            <div className="project-tags" aria-label="Kategorie projektu">
+              <span>World of Warcraft</span>
+              <span>Polska lokalizacja</span>
+              <span>Community</span>
+            </div>
+            <a className="project-link" href="https://pl.wowtranslateproject.org/" target="_blank" rel="noreferrer">
+              Odwiedź WoW Po Polsku <ArrowRight size={18} aria-hidden="true" />
+            </a>
+          </div>
+        </article>
       </section>
 
       <section className="contact" id="contact">
