@@ -1,145 +1,185 @@
-const services = [
+import { useState } from 'react';
+
+const skills = [
   {
-    id: '01',
-    title: 'AUTOMATYZACJE',
-    text: 'Łączę narzędzia i usuwam powtarzalne czynności z codziennej pracy.',
-    style: 'bg-[#0b0d12] text-white',
-    badge: 'bg-[#e9ff66] text-[#0b0d12]',
+    icon: 'code',
+    title: 'Rozwiązania low-code',
+    text: 'Buduję lekkie aplikacje i narzędzia, które rozwiązują konkretny problem bez niepotrzebnego komplikowania.',
+    items: ['Aplikacje wewnętrzne', 'Panele i formularze', 'Szybkie prototypy'],
   },
   {
-    id: '02',
-    title: 'APLIKACJE',
-    text: 'Buduję lekkie rozwiązania low-code dopasowane do realnego procesu.',
-    style: 'bg-[#e9ff66] text-[#0b0d12]',
-    badge: 'bg-[#0b0d12] text-white',
+    icon: 'layers',
+    title: 'Automatyzacje',
+    text: 'Łączę systemy i upraszczam powtarzalne zadania, żeby codzienna praca zajmowała mniej czasu.',
+    items: ['Integracje', 'Przepływy danych', 'Automatyzacja pracy'],
   },
   {
-    id: '03',
-    title: 'PROCESY',
-    text: 'Porządkuję przepływy tak, żeby były prostsze dla ludzi i biznesu.',
-    style: 'bg-white text-[#0b0d12]',
-    badge: 'bg-[#345cff] text-white',
+    icon: 'spark',
+    title: 'Lepsze procesy',
+    text: 'Porządkuję chaotyczne działania i przekładam je na prosty, czytelny proces dla zespołu.',
+    items: ['Analiza procesu', 'Projektowanie rozwiązań', 'Optymalizacja'],
   },
 ];
 
-const ticker = ['LOW-CODE', 'AUTOMATION', 'WORKFLOWS', 'UX', 'INTEGRATIONS'];
+function Icon({ name }: { name: string }) {
+  if (name === 'layers') {
+    return (
+      <svg viewBox="0 0 24 24" aria-hidden="true" className="size-7" fill="none" stroke="currentColor" strokeWidth="1.8">
+        <path d="m12 3-9 5 9 5 9-5-9-5Z" /><path d="m3 12 9 5 9-5M3 16l9 5 9-5" />
+      </svg>
+    );
+  }
+
+  if (name === 'spark') {
+    return (
+      <svg viewBox="0 0 24 24" aria-hidden="true" className="size-7" fill="none" stroke="currentColor" strokeWidth="1.8">
+        <path d="M12 2c.5 5.5 4.5 9.5 10 10-5.5.5-9.5 4.5-10 10-.5-5.5-4.5-9.5-10-10 5.5-.5 9.5-4.5 10-10Z" />
+      </svg>
+    );
+  }
+
+  return (
+    <svg viewBox="0 0 24 24" aria-hidden="true" className="size-7" fill="none" stroke="currentColor" strokeWidth="1.8">
+      <path d="m8 9-3 3 3 3M16 9l3 3-3 3M14 5l-4 14" />
+    </svg>
+  );
+}
 
 function Arrow() {
-  return <span aria-hidden="true" className="text-xl leading-none">↗</span>;
+  return (
+    <svg viewBox="0 0 24 24" aria-hidden="true" className="size-5" fill="none" stroke="currentColor" strokeWidth="2">
+      <path d="M5 12h14M13 6l6 6-6 6" />
+    </svg>
+  );
 }
 
 export default function App() {
+  const [light, setLight] = useState(false);
+
   return (
-    <main id="top" className="min-h-screen overflow-hidden bg-[#345cff] text-[#0b0d12] selection:bg-[#e9ff66]">
-      <div className="grid-bg">
-        <header className="mx-auto flex min-h-24 w-[min(1320px,calc(100%-32px))] items-center justify-between gap-6 border-b-2 border-[#0b0d12]">
-          <a href="#top" className="flex items-center gap-3 font-black tracking-[-0.04em]" aria-label="cruthecat — początek strony">
-            <span className="grid size-11 place-items-center bg-[#0b0d12] text-sm text-[#e9ff66]">CT</span>
-            <span className="text-lg">cruthecat</span>
-          </a>
-          <nav className="flex items-center gap-3 text-sm font-bold" aria-label="Nawigacja strony">
-            <a href="#about" className="hidden px-3 py-3 hover:underline sm:block">O MNIE</a>
-            <a href="#services" className="hidden px-3 py-3 hover:underline sm:block">USŁUGI</a>
-            <a href="https://github.com/cruthecat" target="_blank" rel="noreferrer" className="flex items-center gap-3 border-2 border-[#0b0d12] bg-white px-5 py-3 shadow-[4px_4px_0_#0b0d12] transition-transform hover:-translate-y-1">
-              GITHUB <Arrow />
+    <div className={light ? 'theme-light min-h-screen' : 'min-h-screen'}>
+      <main id="top" className="page-shell min-h-screen overflow-hidden bg-[var(--page)] text-[var(--text)]">
+        <header className="sticky top-0 z-50 border-b border-[var(--line)] bg-[color:var(--nav)] backdrop-blur-xl">
+          <nav className="mx-auto flex h-[72px] w-[min(1040px,calc(100%-32px))] items-center justify-between" aria-label="Główna nawigacja">
+            <a href="#top" className="group flex items-center gap-2.5 font-bold tracking-tight" aria-label="cruthecat — początek strony">
+              <span className="grid size-8 place-items-center rounded-lg bg-[var(--accent)] text-sm font-black text-white shadow-[0_0_24px_var(--accent-glow)]">C</span>
+              <span className="text-lg">cruthecat<span className="text-[var(--accent-soft)]">.dev</span></span>
             </a>
+
+            <div className="flex items-center gap-1 sm:gap-6">
+              <a href="#about" className="hidden rounded-lg px-3 py-2 text-sm font-semibold text-[var(--muted)] transition hover:bg-[var(--surface)] hover:text-[var(--text)] sm:block">O mnie</a>
+              <a href="#skills" className="hidden rounded-lg px-3 py-2 text-sm font-semibold text-[var(--muted)] transition hover:bg-[var(--surface)] hover:text-[var(--text)] sm:block">Co robię</a>
+              <a href="https://github.com/cruthecat" target="_blank" rel="noreferrer" className="hidden rounded-lg px-3 py-2 text-sm font-semibold text-[var(--muted)] transition hover:bg-[var(--surface)] hover:text-[var(--text)] md:block">GitHub</a>
+              <button
+                type="button"
+                onClick={() => setLight((value) => !value)}
+                className="grid size-10 place-items-center rounded-xl border border-[var(--line)] bg-[var(--surface)] text-[var(--text)] transition hover:border-[var(--accent)]"
+                aria-label={light ? 'Włącz ciemny motyw' : 'Włącz jasny motyw'}
+              >
+                {light ? '☀' : '☾'}
+              </button>
+            </div>
           </nav>
         </header>
 
-        <section className="mx-auto grid w-[min(1320px,calc(100%-32px))] gap-8 py-14 lg:grid-cols-[1.35fr_.65fr] lg:items-end lg:py-24">
-          <div>
-            <div className="mb-8 flex items-center gap-3 font-mono text-xs font-bold tracking-[0.16em]">
-              <span className="size-3 animate-pulse rounded-full bg-[#e9ff66] ring-4 ring-[#0b0d12]" />
-              LOW-CODE DEVELOPER / POLSKA
-            </div>
-            <h1 className="display text-[clamp(4.1rem,11.5vw,10.5rem)] leading-[0.76] tracking-[-0.085em]">
-              ROBIĘ<br />RZECZY
-              <span className="mt-3 block w-fit -rotate-2 bg-[#e9ff66] px-4 pb-3 pt-1 text-[0.61em] leading-none shadow-[9px_9px_0_#0b0d12]">PROŚCIEJ.</span>
-            </h1>
-          </div>
+        <section className="hero-grid relative border-b border-[var(--line)]">
+          <div className="hero-glow" aria-hidden="true" />
+          <div className="relative z-10 mx-auto flex min-h-[680px] w-[min(1040px,calc(100%-32px))] items-center py-20 sm:min-h-[720px]">
+            <div className="w-full max-w-4xl">
+              <div className="mb-8 flex items-center gap-4">
+                <div className="avatar-ring grid size-20 shrink-0 place-items-center rounded-full sm:size-24">
+                  <div className="grid size-[calc(100%-6px)] place-items-center rounded-full bg-[var(--page)] text-2xl font-black text-[var(--text)] sm:text-3xl">CT</div>
+                </div>
+                <span className="inline-flex items-center gap-2 rounded-full border border-[var(--line)] bg-[var(--surface)] px-3 py-1.5 text-sm font-semibold text-[var(--muted)]">
+                  <span className="size-2 rounded-full bg-emerald-400 shadow-[0_0_10px_#34d399]" />
+                  Dostępny do współpracy
+                </span>
+              </div>
 
-          <aside className="border-2 border-[#0b0d12] bg-white p-6 shadow-[10px_10px_0_#0b0d12] lg:mb-1 lg:p-8">
-            <div className="mb-12 flex items-start justify-between font-mono text-xs font-bold">
-              <span>PROFILE_01</span>
-              <span className="bg-[#0b0d12] px-3 py-1 text-white">ONLINE</span>
+              <h1 className="max-w-4xl text-[clamp(3.1rem,7.3vw,5.6rem)] font-extrabold leading-[1.02] tracking-[-0.055em]">
+                Hej, jestem <span className="gradient-text">cruthecat.</span><br />
+                Low-Code Developer
+              </h1>
+
+              <p className="mt-8 max-w-2xl text-lg leading-relaxed text-[var(--muted)] sm:text-xl">
+                Projektuję proste narzędzia, automatyzacje i procesy. Łączę technologię z dobrym doświadczeniem użytkownika, żeby rzeczy po prostu działały.
+              </p>
+
+              <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:items-center">
+                <a href="#skills" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-[var(--accent)] px-6 text-sm font-bold text-white shadow-[0_12px_34px_var(--accent-glow)] transition hover:-translate-y-0.5 hover:bg-[var(--accent-hover)]">
+                  Zobacz, co robię <Arrow />
+                </a>
+                <a href="https://github.com/cruthecat" target="_blank" rel="noreferrer" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl border border-[var(--line)] bg-[var(--surface)] px-6 text-sm font-bold transition hover:-translate-y-0.5 hover:border-[var(--accent)]">
+                  GitHub <span aria-hidden="true">↗</span>
+                </a>
+              </div>
             </div>
-            <p className="text-xl font-bold leading-snug sm:text-2xl">
-              Zamieniam skomplikowane procesy w proste narzędzia, automatyzacje i aplikacje.
-            </p>
-            <a href="#services" className="mt-9 flex min-h-14 items-center justify-between border-t-2 border-[#0b0d12] pt-5 text-sm font-black">
-              ZOBACZ, CO ROBIĘ <Arrow />
-            </a>
-          </aside>
+          </div>
         </section>
-      </div>
 
-      <div className="overflow-hidden border-y-2 border-[#0b0d12] bg-[#0b0d12] py-4 text-white" aria-label="Obszary specjalizacji">
-        <div className="ticker-track flex w-max items-center gap-8 font-mono text-sm font-bold tracking-[0.14em]">
-          {[...ticker, ...ticker].map((item, index) => (
-            <span className="flex items-center gap-8" key={`${item}-${index}`}>
-              {item}<i className="not-italic text-[#e9ff66]">✦</i>
-            </span>
-          ))}
-        </div>
-      </div>
-
-      <section id="about" className="bg-[#f3f0e8] px-4 py-24 sm:py-32">
-        <div className="mx-auto grid w-full max-w-[1320px] gap-14 lg:grid-cols-[.55fr_1.45fr]">
-          <div className="font-mono text-xs font-bold tracking-[0.16em]">01 / O MNIE</div>
-          <div>
-            <h2 className="display max-w-5xl text-[clamp(3.1rem,7vw,7.5rem)] leading-[0.87] tracking-[-0.075em]">
-              TECHNOLOGIA MA POMAGAĆ, <span className="text-[#345cff]">NIE PRZESZKADZAĆ.</span>
-            </h2>
-            <div className="mt-14 grid gap-8 border-t-2 border-[#0b0d12] pt-8 text-base leading-relaxed text-[#44464d] sm:grid-cols-2 sm:text-lg">
-              <p>Porządkuję chaotyczne procesy i skracam drogę od pomysłu do działającego rozwiązania.</p>
-              <p>Łączę logikę, low-code i dobry UX. Bez zbędnych warstw, prezentacji i komplikowania.</p>
+        <section id="about" className="px-4 py-24 sm:py-32">
+          <div className="mx-auto w-full max-w-[1040px]">
+            <p className="section-kicker">O MNIE</p>
+            <div className="mt-5 grid gap-10 lg:grid-cols-[1.05fr_.95fr] lg:gap-20">
+              <h2 className="text-[clamp(2.35rem,5vw,4.25rem)] font-extrabold leading-[1.07] tracking-[-0.045em]">
+                Buduję cyfrowe rozwiązania, które są <span className="gradient-text">proste w użyciu.</span>
+              </h2>
+              <div className="space-y-5 text-base leading-relaxed text-[var(--muted)] sm:text-lg">
+                <p>Najpierw rozumiem problem, dopiero później dobieram narzędzia. Dzięki temu rozwiązanie wspiera pracę zamiast dodawać kolejną warstwę chaosu.</p>
+                <p>Lubię czytelne interfejsy, dobrze poukładane procesy i automatyzacje, których efekt naprawdę widać.</p>
+              </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      <section id="services" className="bg-[#f3f0e8] px-4 pb-24 sm:pb-32">
-        <div className="mx-auto w-full max-w-[1320px]">
-          <div className="mb-10 flex items-end justify-between gap-6 border-b-2 border-[#0b0d12] pb-6">
-            <p className="font-mono text-xs font-bold tracking-[0.16em]">02 / CO ROBIĘ</p>
-            <p className="max-w-sm text-right text-sm font-semibold text-[#56585f]">Trzy obszary, w których najczęściej zamieniam chaos w konkretny efekt.</p>
-          </div>
-          <div className="grid gap-4 lg:grid-cols-3">
-            {services.map((service) => (
-              <article key={service.id} className={`${service.style} flex min-h-[390px] flex-col justify-between border-2 border-[#0b0d12] p-7 shadow-[7px_7px_0_#0b0d12] transition-transform hover:-translate-y-2 sm:p-9`}>
-                <div className="flex items-start justify-between">
-                  <span className={`${service.badge} px-3 py-2 font-mono text-xs font-bold`}>{service.id}</span>
-                  <span className="text-3xl" aria-hidden="true">✦</span>
-                </div>
-                <div>
-                  <h3 className="display text-4xl tracking-[-0.06em] sm:text-5xl">{service.title}</h3>
-                  <p className="mt-5 max-w-sm text-base font-semibold leading-relaxed opacity-75">{service.text}</p>
-                </div>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
+        <section id="skills" className="border-y border-[var(--line)] bg-[var(--section)] px-4 py-24 sm:py-32">
+          <div className="mx-auto w-full max-w-[1040px]">
+            <div className="max-w-2xl">
+              <p className="section-kicker">CO ROBIĘ</p>
+              <h2 className="mt-5 text-[clamp(2.35rem,5vw,4.25rem)] font-extrabold leading-tight tracking-[-0.045em]">Od pomysłu do działającego rozwiązania</h2>
+              <p className="mt-5 text-lg leading-relaxed text-[var(--muted)]">Skupiam się na trzech obszarach, które pomagają pracować szybciej, prościej i wygodniej.</p>
+            </div>
 
-      <section className="bg-[#e9ff66] px-4 py-24 sm:py-32">
-        <div className="mx-auto grid w-full max-w-[1320px] gap-12 lg:grid-cols-[1fr_auto] lg:items-end">
-          <div>
-            <p className="mb-8 font-mono text-xs font-bold tracking-[0.16em]">03 / KONTAKT</p>
-            <h2 className="display text-[clamp(3.5rem,9vw,9rem)] leading-[0.82] tracking-[-0.085em]">MASZ POMYSŁ?<br />ZRÓBMY GO.</h2>
+            <div className="mt-12 grid gap-5 lg:grid-cols-3">
+              {skills.map((skill) => (
+                <article key={skill.title} className="skill-card group rounded-2xl border border-[var(--line)] bg-[var(--card)] p-7 transition duration-300 hover:-translate-y-1 hover:border-[var(--accent)]">
+                  <div className="mb-7 grid size-12 place-items-center rounded-xl bg-[var(--accent-dim)] text-[var(--accent-soft)] transition group-hover:scale-105">
+                    <Icon name={skill.icon} />
+                  </div>
+                  <h3 className="text-xl font-bold tracking-tight">{skill.title}</h3>
+                  <p className="mt-4 leading-relaxed text-[var(--muted)]">{skill.text}</p>
+                  <ul className="mt-7 space-y-3 border-t border-[var(--line)] pt-6 text-sm font-semibold text-[var(--text-soft)]">
+                    {skill.items.map((item) => (
+                      <li key={item} className="flex items-center gap-3"><span className="size-1.5 rounded-full bg-[var(--accent-soft)]" />{item}</li>
+                    ))}
+                  </ul>
+                </article>
+              ))}
+            </div>
           </div>
-          <a href="https://github.com/cruthecat" target="_blank" rel="noreferrer" className="flex min-h-20 min-w-64 items-center justify-between gap-8 border-2 border-[#0b0d12] bg-[#345cff] px-7 font-black text-white shadow-[8px_8px_0_#0b0d12] transition-transform hover:-translate-y-2">
-            OTWÓRZ GITHUB <Arrow />
-          </a>
-        </div>
-      </section>
+        </section>
 
-      <footer className="bg-[#0b0d12] px-4 py-8 text-white">
-        <div className="mx-auto flex w-full max-w-[1320px] flex-col gap-5 text-sm font-bold sm:flex-row sm:items-center sm:justify-between">
-          <a href="#top" className="text-lg font-black">cruthecat.</a>
-          <p className="m-0 text-[#8f939f]">LOW-CODE DEVELOPER · © 2026</p>
-          <a href="#top" className="hover:text-[#e9ff66]">DO GÓRY ↑</a>
-        </div>
-      </footer>
-    </main>
+        <section className="px-4 py-24 sm:py-32">
+          <div className="contact-panel relative mx-auto overflow-hidden rounded-3xl border border-[var(--line)] bg-[var(--card)] px-6 py-14 sm:px-12 sm:py-16 lg:flex lg:max-w-[1040px] lg:items-end lg:justify-between lg:gap-12">
+            <div className="contact-glow" aria-hidden="true" />
+            <div className="relative max-w-2xl">
+              <p className="section-kicker">KONTAKT</p>
+              <h2 className="mt-5 text-[clamp(2.3rem,5vw,4.2rem)] font-extrabold leading-[1.08] tracking-[-0.045em]">Masz pomysł? Porozmawiajmy.</h2>
+              <p className="mt-5 text-lg text-[var(--muted)]">Zajrzyj na mój profil i odezwij się przez GitHub.</p>
+            </div>
+            <a href="https://github.com/cruthecat" target="_blank" rel="noreferrer" className="relative mt-9 inline-flex min-h-12 shrink-0 items-center justify-center gap-2 rounded-xl bg-[var(--accent)] px-6 text-sm font-bold text-white transition hover:-translate-y-0.5 hover:bg-[var(--accent-hover)] lg:mt-0">
+              Otwórz GitHub <Arrow />
+            </a>
+          </div>
+        </section>
+
+        <footer className="border-t border-[var(--line)] px-4 py-8">
+          <div className="mx-auto flex w-full max-w-[1040px] flex-col gap-4 text-sm text-[var(--muted)] sm:flex-row sm:items-center sm:justify-between">
+            <p><span className="font-bold text-[var(--text)]">cruthecat.dev</span> · Low-Code Developer</p>
+            <p>© 2026 · Zbudowane z dbałością o prostotę.</p>
+          </div>
+        </footer>
+      </main>
+    </div>
   );
 }
